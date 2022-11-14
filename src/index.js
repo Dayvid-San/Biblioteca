@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 
 
 app.get('/', (req, res) => {
-    res.end("Let's do it. Just do it!")
+    res.end("Let's do it!")
 })
 
 
