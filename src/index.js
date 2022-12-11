@@ -3,15 +3,13 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 
-app.get('/', (req, res) => {
-    res.end("Let's do it!")
-})
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.get('/computacao', (req, res) => {
-    res.end("Computer")
-})
+app.use(require('./routes'))
+
 
 
 app.listen(PORT, () => {
-    console.log('it is working on https://localhost:3000')
+    console.log('it is working on http://localhost:3000')
 })
