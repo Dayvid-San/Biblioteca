@@ -4,16 +4,16 @@ const crypto = require('crypto')
 
 
 module.exports = {
-    dest: path.resolve(__dirname, '..', '..', 'tmp', 'upload'),
+    dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
     storage: multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, ath.resolve(__dirname, '..', '..', 'tmp', 'upload'))
+            cb(null, path.resolve(__dirname, '..', '..', 'tmp', 'uploads'))
         },
         filename: ( req, file, cb) => {
             crypto.randomBytes(16, (err, hash) => {
                 if (err) cb(err)
 
-                const fileName = `${hash.toString('hex')}-${file.originalname}`
+                file.key = `${hash.toString('hex')}-${file.originalname}`
             })
         }
     }),
@@ -28,11 +28,11 @@ module.exports = {
             'image/gif'
         ]
 
-        if (allowedMines.includes(file.minetype)) {
+        if (allowedMines.includes(file.mimetype)) {
             cb(null, true)
         }
         else {
-            cb( new Error('Invalid form type.'))
+            cb( new Error('Invalid form type file.'))
         }
     }
 }

@@ -3,7 +3,7 @@ const multer = require('multer')
 const multerConfig = require('./config/multer')
 const routes = require('express').Router()
 
-routes.post('/posts', multer().single('file'), (req,res) => {
+routes.post('/posts', multer(multerConfig).single('file'), (req,res) => {
     console.log(req.file)
 
     return res.json({ status: 'funcionando' });
