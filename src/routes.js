@@ -10,7 +10,7 @@ routes.post('/posts', multer(multerConfig).single('file'), (req,res) => {
 })
 
 routes.get('/', (req,res) => {
-    res.json({ message: 'Hello world' })
+    res.send('Hello world')
 })
 
 module.exports = routes
