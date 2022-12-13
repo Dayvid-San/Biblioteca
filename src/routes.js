@@ -6,7 +6,7 @@ const routes = require('express').Router()
 routes.post('/posts', multer(multerConfig).single('file'), (req,res) => {
     console.log(req.file)
 
-    return res.json({ status: 'funcionando' });
+    return res.json({ status: 'enviado!' });
 })
 
 routes.get('/', (req,res) => {

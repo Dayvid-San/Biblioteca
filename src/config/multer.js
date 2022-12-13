@@ -13,21 +13,23 @@ module.exports = {
             crypto.randomBytes(16, (err, hash) => {
                 if (err) cb(err)
 
-                const fileName = `${hash.toString('hex')}-${file.originalname}`
+                const fileName = `${file.originalname}-${hash.toString('hex')}`
 
                 cb(null, fileName)
             })
         }
     }),
     limits: {
-        fileSize: 2 * 1024 * 1024,
+        fileSize: 2 * 1024 * 1024 * 1024,
     },
+    /*
     fileFilter: (req, file, cb) => {
         const allowedMines = [
             'image/jpeg',
             'image/pjpeg',
             'image/png',
-            'image/gif'
+            'image/gif',
+            'doc/'
         ]
 
         if (allowedMines.includes(file.mimetype)) {
@@ -37,4 +39,5 @@ module.exports = {
             cb( new Error('Invalid form type file.'))
         }
     }
+    */
 }
